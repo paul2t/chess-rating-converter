@@ -4,15 +4,19 @@ html {
 body {
     color: #eee;
     background: #121212;
-    font-size: 2vmax;
+    font-size: 3vmax;
 }
 
 #input-rating {
-    font-size: 2vmax;
+    font-size: 3vmax;
 }
 
 #input-rating-type {
-    font-size: 2vmax;
+    font-size: 3vmax;
+}
+
+.footer {
+    font-size: 1.5vmax;
 }
 
 table {
