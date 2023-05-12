@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <title>Chess rating converter</title>
+    <link rel="stylesheet" href="ratings.css">
+</head>
+<body>
+    <h1>Chess rating converter</h1>
+    <input id="input-rating" type="number" min="0" max="5000" value="2000"/>
+    <select id="input-rating-type">
+        <option value="chesscom-rapid">Chesscom Rapid</option>
+        <option value="chesscom-blitz" selected>Chesscom Blitz</option>
+        <option value="chesscom-bullet">Chesscom Bullet</option>
+        <option value="lichess-rapid">Lichess Classical</option>
+        <option value="lichess-rapid">Lichess Rapid</option>
+        <option value="lichess-blitz">Lichess Blitz</option>
+        <option value="lichess-bullet">Lichess Bullet</option>
+        <option value="fide">FIDE</option>
+        <option value="uscf">USCF</option>
+    </select>
+    <br/><br/>
+    <table>
+        <tr>
+            <td class="rating-type lichess classical">Lichess Classical : </td>
+            <td id="lichess-classical" class="rating-result lichess classical"></td>
+        </tr>
+        <tr>
+            <td class="rating-type chesscom rapid">Chesscom Rapid : </td>
+            <td id="chesscom-rapid" class="rating-result chesscom "></td>
+        </tr>
+        <tr>
+            <td class="rating-type lichess rapid">Lichess Rapid : </td>
+            <td id="lichess-rapid" class="rating-result lichess rapid"></td>
+        </tr>
+        <tr>
+            <td class="rating-type chesscom blitz">Chesscom Blitz : </td>
+            <td id="chesscom-blitz" class="rating-result chesscom blitz"></td>
+        </tr>
+        <tr>
+            <td class="rating-type lichess blitz">Lichess Blitz : </td>
+            <td id="lichess-blitz" class="rating-result lichess blitz"></td>
+        </tr>
+        <tr>
+            <td class="rating-type chesscom bullet">Chesscom Bullet : </td>
+            <td id="chesscom-bullet" class="rating-result chesscom bullet"></td>
+        </tr>
+        <tr>
+            <td class="rating-type lichess bullet">Lichess Bullet : </td>
+            <td id="lichess-bullet" class="rating-result lichess bullet"></td>
+        </tr>
+        <tr>
+            <td class="rating-type fide classical">FIDE : </td>
+            <td id="fide" class="rating-result fide classical"></td>
+        </tr>
+        <tr>
+            <td class="rating-type uscf classical">USCF : </td>
+            <td id="uscf" class="rating-result uscf classical"></td>
+        </tr>
+    </table>
+
+    <p>Data from <a href="https://chessgoals.com/rating-comparison">chessgoals.com/rating-comparison</a></p>
+
+    <script src="ratings.js"></script>
+</body>
