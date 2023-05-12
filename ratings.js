@@ -12,16 +12,46 @@ const ratings_conversions = new Map([
 ]);
 
 
-document.getElementById("input-rating").addEventListener("change", (event) => update_ratings());
-document.getElementById("input-rating-type").addEventListener("change", (event) => update_ratings());
-update_ratings();
+document.getElementById("input-rating").addEventListener("change", (event) => on_ratings_params_changed());
+document.getElementById("input-rating-type").addEventListener("change", (event) => on_ratings_params_changed());
+init_from_url_parameter();
 
 
-function update_ratings()
-{
+function init_from_url_parameter() {
+    const query_string = window.location.search;
+    const url_params = new URLSearchParams(query_string);
+    const rating = url_params.get('rating');
+    const type = url_params.get('from');
+    
+    if (rating != null)
+        document.getElementById("input-rating").value = rating;
+    if (type != null)
+        document.getElementById("input-rating-type").value = type;
+
+    update_ratings();
+}
+
+function on_ratings_params_changed() {
     const input_rating_value = document.getElementById("input-rating").value;
     const input_rating_type = document.getElementById("input-rating-type").value;
 
+    let params = new URLSearchParams();
+    if (input_rating_value != "")
+        params.set('rating', input_rating_value)
+    params.set('from', input_rating_type);
+    const new_url = `${location.pathname}?${params}`;
+    history.replaceState(null, '', new_url);
+
+    update_ratings_with(input_rating_value, input_rating_type);
+}
+
+function update_ratings() {
+    const input_rating_value = document.getElementById("input-rating").value;
+    const input_rating_type = document.getElementById("input-rating-type").value;
+    update_ratings_with(input_rating_value, input_rating_type);
+}
+
+function update_ratings_with(input_rating_value, input_rating_type) {
     const ratings_outputs = document.getElementsByClassName("rating-result");
 
     const normalized_rating = rating_to_normalized_rating(input_rating_value, input_rating_type);
